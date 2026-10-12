@@ -17,7 +17,7 @@
             </ol>
         </nav>
 
-        <h1 class="text-dark">Olá, Laravel</h1>
+        <h1 class="text-dark">Olá, Laravel!</h1>
     </div>
 </body>
 </html>

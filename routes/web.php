@@ -38,3 +38,7 @@ Route::get('/perfil', function() {
             'interesses' => ['Laravel', 'MySQL', 'PHP']
     ]);
 });
+
+Route::get('/sobre', function() {
+    return view('sobre');
+});

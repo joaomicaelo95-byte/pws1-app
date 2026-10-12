@@ -14,6 +14,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><a href="/perfil">Perfil</a></li>
+                <li class="breadcrumb-item"><a href="/sobre">Sobre</a></li>
             </ol>
         </nav>
 

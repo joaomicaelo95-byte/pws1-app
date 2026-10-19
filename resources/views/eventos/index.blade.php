@@ -13,12 +13,22 @@
 
         <hr>
 
-        <nav>
-            <a href="/eventos">Todos os eventos</a>
-            <a href="/eventos?tipo=workshop">Workshops</a>
-            <a href="/eventos?tipo=palestra">Palestras</a>
-            <a href="/eventos?tipo=hackathon">Hackathons</a>
-        </nav>
+        <div class="grid">
+            <div>
+                <p><a href="/eventos">Todos os eventos</a></p>
+                <p><a href="/eventos?disponibilidade=disponiveis">Disponíveis</a></p>
+            </div>
+            <div>
+                <p><a href="/eventos?tipo=workshop">Workshops</a></p>
+                <p><a href="/eventos?disponibilidade=esgotados">Esgotados</a></p>
+            </div>
+            <div>
+                <p><a href="/eventos?tipo=palestra">Palestras</a></p>
+            </div>
+            <div>
+                <p><a href="/eventos?tipo=hackathon">Hackathons</a></p>
+            </div>
+        </div>
 
         <hr>
 

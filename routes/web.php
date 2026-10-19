@@ -108,14 +108,30 @@ Route::get('/sobre', function() {
 
 Route::get('/eventos', function () use ($eventos) {
     $tipo = request('tipo');
+    $disponibilidade = request('disponibilidade');
+
+    if($disponibilidade === 'esgotados') {
+        $eventos = array_filter(
+            $eventos,
+            fn($evento) => $evento['inscritos'] >= $evento['vagas']
+        );
+    }elseif ($disponibilidade === 'disponiveis') {
+        $eventos = array_filter(
+            $eventos,
+            fn($evento) => $evento['inscritos'] < $evento['vagas']
+        );
+    }
+
     if($tipo){
         $eventos = array_filter($eventos, 
             fn($evento) => $evento['tipo'] === $tipo
         );
     }
+
     return view('eventos.index', [
         'eventos' => $eventos,
         'tipo' => $tipo,
+        'disponibilidade' => $disponibilidade,
     ]);
 });
 

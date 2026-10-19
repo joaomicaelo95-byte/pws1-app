@@ -14,3 +14,6 @@ B2.
 
 b5. 
     /dobro/abc devolve 404: a restrição whereNumber faz com que a rota não corresponda.
+
+d4.
+    

@@ -8,7 +8,7 @@
 </head>
 <body>
     <main class="container">
-        <p><a href="/eventos" role="button" class="primary">Voltar aos eventos</a></p>
+        <p><a href="{{ route('eventos.index') }}" role="button" class="primary">Voltar aos eventos</a></p>
         <h1>Eventos</h1>
 
         <h2>{{ $evento['titulo'] }}</h2>

@@ -15,19 +15,19 @@
 
         <div class="grid">
             <div>
-                <p><a href="/eventos">Todos os eventos</a></p>
-                <p><a href="/eventos?disponibilidade=disponiveis">Disponíveis</a></p>
+                <p><a href="{{ route('eventos.index') }}">Todos os eventos</a></p>
+                <p><a href="{{ route('eventos.index', ['disponibilidade' => 'disponiveis']) }}">Disponíveis</a></p>
             </div>
             <div>
-                <p><a href="/eventos?tipo=workshop">Workshops</a></p>
-                <p><a href="/eventos?disponibilidade=esgotados">Esgotados</a></p>
+                <p><a href="{{ route('eventos.index', ['tipo' => 'workshop']) }}">Workshops</a></p>
+                <p><a href="{{ route('eventos.index', ['disponibilidade' => 'esgotados']) }}">Esgotados</a></p>
             </div>
             <div>
-                <p><a href="/eventos?tipo=palestra">Palestras</a></p>
-                <p><a href="/eventos/proximos">Próximos</a></p>
+                <p><a href="{{ route('eventos.index', ['tipo' => 'palestra']) }}">Palestras</a></p>
+                <p><a href="{{ route('eventos.proximos') }}">Próximos</a></p>
             </div>
             <div>
-                <p><a href="/eventos?tipo=hackathon">Hackathons</a></p>
+                <p><a href="{{ route('eventos.index', ['tipo' => 'hackathon']) }}">Hackathons</a></p>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
                 @forelse ($eventos as $evento)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><a href="/eventos/{{ $evento['id'] }}">{{ $evento['titulo'] }}</a></td>
+                        <td><a href="{{ route('eventos.show', $evento['id']) }}">{{ $evento['titulo'] }}</a></td>
                         <td>{{ date('d/m/Y', strtotime($evento['data'])) }}</td>
                         @if ($evento['inscritos'] >= $evento['vagas'])
                             <td><strong>Esgotado</strong></td>

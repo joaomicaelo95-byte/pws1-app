@@ -16,4 +16,10 @@ b5.
     /dobro/abc devolve 404: a restrição whereNumber faz com que a rota não corresponda.
 
 d4.
-    
+    eventos/3 abre o evento com o id 3, eventos/99 dá erro 404 porque ainda não existe um evento com esse id e eventos/abc não abre porque "abc" não é um id válido
+
+e.
+    foi adicionado filtros para procurar melhor cada tipo de eventos
+
+desafio pl02.
+    foi adicionado um botão para mostrar os próximos eventos que vão acontecer desde o dia de hoje até mais para a frente

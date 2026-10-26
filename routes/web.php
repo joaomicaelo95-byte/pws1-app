@@ -2,10 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\InicioController;
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', [InicioController::class, 'index'])
+    ->name('inicio');
+
+Route::get('/eventos', [EventoController::class, 'index'])
+    ->name('eventos.index');
+
+Route::get('/eventos/{id}', [EventoController::class, 'show'])
+    ->whereNumber('id')
+    ->name('eventos.show');
+
+Route::get('/eventos/proximos', [EventoController::class, 'proximos'])
+    ->name('eventos.proximos');
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
 });
+
 
 // Route::get('/ola', function () {
 //     return 'Olá mundo';
@@ -50,12 +65,3 @@ Route::get('/', function () {
 //     ]);
 // });
 
-Route::get('/eventos', [EventoController::class, 'index'])
-    ->name('eventos.index');
-
-Route::get('/eventos/{id}', [EventoController::class, 'show'])
-    ->whereNumber('id')
-    ->name('eventos.show');
-
-Route::get('/eventos/proximos', [EventoController::class, 'proximos'])
-    ->name('eventos.proximos');

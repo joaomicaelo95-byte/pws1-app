@@ -24,7 +24,7 @@
             </div>
             <div>
                 <p><a href="{{ route('eventos.index', ['tipo' => 'palestra']) }}">Palestras</a></p>
-                <p><a href="{{ route('eventos.proximos') }}">Próximos</a></p>
+                <p><a href="{{ route('eventos.proximos') }}">Próximos eventos</a></p>
             </div>
             <div>
                 <p><a href="{{ route('eventos.index', ['tipo' => 'hackathon']) }}">Hackathons</a></p>

@@ -41,7 +41,7 @@ class EventoController extends Controller
         ]);
     }
 
-    public function proximos(): view
+    public function proximos(): View
     {
         $eventos = config('eventos');
         $hoje = date('Y-m-d');

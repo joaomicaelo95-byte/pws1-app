@@ -14,12 +14,17 @@ Route::get('/eventos/{id}', [EventoController::class, 'show'])
     ->whereNumber('id')
     ->name('eventos.show');
 
+// Encaminha URs como /evento(tipo/workshop) para o métedo porTipo()
+Route::get('eventos/tipo/{tipo}', [EventoController::class, 'porTipo'])
+    ->name('eventos.tipo');
+
 Route::get('/eventos/proximos', [EventoController::class, 'proximos'])
     ->name('eventos.proximos');
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
+
 
 
 // Route::get('/ola', function () {

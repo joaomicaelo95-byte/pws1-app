@@ -2,10 +2,19 @@
 
 @section('titulo', 'Início')
 
+<!-- Desafio: 1 cor por tipo, só nesta página -->
+@push('estilos')
+    <style>
+        .etiqueta-workshop {color: #1f6f8b;}
+        .etiqueta-palestra {color: #8a2044;}
+        .etiqueta-hackathon {color: #8a5a00;}
+    </style>
+@endpush
+
 @section('conteudo')
     <h1>{{ config('app.name') }}</h1>
     <p>Workshops, palestras e hackathons do ISLA Gaia.</p>
-    <p><a href="{{ route('eventos.index') }}" class="btn btn-primary">Ver eventos</a></p>
+    <p><a href="{{ route('eventos.index') }}" role="button" class="botao">Ver eventos</a></p>
     
     <h2>Próximos Eventos</h2>
     <div class="grelha">

@@ -26,3 +26,6 @@
 
 # desafio pl03.
     a rota '/eventos/tipo/{tipo}' não entra em conflito com '/eventos/{id}' porque a primeira tem três segmentos ('eventos', 'tipo' e o valor de {tipo}), enquanto a segunda tem dois ('eventos' e o valor de {id}). Além disso, '{id}' só aceita números devido a 'whereNumber('id')'.
+
+# desafio pl04.
+    a

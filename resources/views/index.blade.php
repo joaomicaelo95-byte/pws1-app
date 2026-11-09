@@ -1,48 +1,18 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha aplicação Laravel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container" mt-5>
+@extends('layouts.app')
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/perfil">Perfil</a></li>
-                <li class="breadcrumb-item"><a href="/sobre">Sobre</a></li>
-            </ol>
-        </nav>
+@section('titulo', 'Início')
 
-        <h1 class="text-dark">Olá, Laravel!</h1>
-    </div>
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="pt-PT">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name') }}</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    </head>
-    <body>
-        <main class="container">
-            <h1>{{ config('app.name') }}</h1>
-            <p>Workshops, palestras e hackathons do ISLA Gaia.</p>
-            <p><a href="{{ route('eventos.index') }}" class="btn btn-primary">Ver eventos</a></p>
-            
-            <h2>Próximos Eventos</h2>
-            <ul>
-                @forelse ($proximos as $evento)
-                    <li><a href="{{ route('eventos.show', $evento['id']) }}">{{ $evento['titulo'] }}</a> - {{ date('d/m/Y', strtotime($evento['data'])) }}</li>
-                @empty
-                    <li>Não há próximos eventos.</li>
-                @endforelse
-        </main>
-    </body>
-</html>
+@section('conteudo')
+    <h1>{{ config('app.name') }}</h1>
+    <p>Workshops, palestras e hackathons do ISLA Gaia.</p>
+    <p><a href="{{ route('eventos.index') }}" class="btn btn-primary">Ver eventos</a></p>
+    
+    <h2>Próximos Eventos</h2>
+    <ul>
+        @forelse ($proximos as $evento)
+            <li><a href="{{ route('eventos.show', $evento['id']) }}">{{ $evento['titulo'] }}</a> - {{ date('d/m/Y', strtotime($evento['data'])) }}</li>
+        @empty
+            <li>Não há próximos eventos.</li>
+        @endforelse
+    </ul>
+@endsection

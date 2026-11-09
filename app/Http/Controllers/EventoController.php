@@ -93,7 +93,7 @@ class EventoController extends Controller
         return view('eventos.show', ['evento' => $evento]);
     }
 
-    private function procurar(int $id): array
+    private function procurar(int $id): ?array
     {
         foreach (config('eventos') as $evento){
             if ($evento['id'] === $id) {

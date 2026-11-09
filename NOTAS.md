@@ -28,4 +28,4 @@
     a rota '/eventos/tipo/{tipo}' não entra em conflito com '/eventos/{id}' porque a primeira tem três segmentos ('eventos', 'tipo' e o valor de {tipo}), enquanto a segunda tem dois ('eventos' e o valor de {id}). Além disso, '{id}' só aceita números devido a 'whereNumber('id')'.
 
 # desafio pl04.
-    a
+    O @section substitui o conteúdo principal da página, enquanto o @push acumula scripts ou estilos adicionais vindos de várias vistas

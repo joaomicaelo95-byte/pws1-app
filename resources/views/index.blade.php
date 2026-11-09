@@ -5,9 +5,9 @@
 <!-- Desafio: 1 cor por tipo, só nesta página -->
 @push('estilos')
     <style>
-        .etiqueta-workshop {color: #1f6f8b;}
-        .etiqueta-palestra {color: #8a2044;}
-        .etiqueta-hackathon {color: #8a5a00;}
+        .etiqueta-workshop {color: #214caa;}
+        .etiqueta-palestra {color: #d99e29;}
+        .etiqueta-hackathon {color: #218d1d;}
     </style>
 @endpush
 

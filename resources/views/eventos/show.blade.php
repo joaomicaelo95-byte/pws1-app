@@ -7,6 +7,10 @@
     <h1>Eventos</h1>
 
     <h2>{{ $evento['titulo'] }}</h2>
+    <!-- Só aparece quando não há vagas disponíveis -->
+    @if ($evento['inscritos'] >= $evento['vagas'])
+        <x-alerta tipo="aviso">Este evento está esgotado.</x-alerta>
+    @endif
     <p><strong>Tipo:</strong> {{ $evento['tipo'] }}</p>
     <p><strong>Data:</strong> {{ date('d/m/Y', strtotime($evento['data'])) }}</p>
     <p><strong>Local:</strong> {{ $evento['local'] }}</p>

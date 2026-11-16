@@ -25,7 +25,7 @@
     </div>
     <hr>
 
-    @if (empty($eventos))
+    @if ($eventos->isEmpty())
         <x-alerta tipo="aviso">Não há eventos para mostrar.</x-alerta>
     @else
         <table>
@@ -41,12 +41,12 @@
                 @foreach ($eventos as $evento)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><a href="{{ route('eventos.show', $evento['id']) }}">{{ $evento['titulo'] }}</a></td>
-                        <td>{{ date('d/m/Y', strtotime($evento['data'])) }}</td>
-                        @if ($evento['inscritos'] >= $evento['vagas'])
+                        <td><a href="{{ route('eventos.show', $evento->id) }}">{{ $evento->titulo }}</a></td>
+                        <td>{{ date('d/m/Y', strtotime($evento->data)) }}</td>
+                        @if ($evento->inscritos >= $evento->vagas)
                             <td><strong>Esgotado</strong></td>
                         @else
-                            <td>{{ $evento['vagas'] - $evento['inscritos'] }}</td>
+                            <td>{{ $evento->vagas - $evento->inscritos }}</td>
                         @endif
                     </tr> 
                 @endforeach

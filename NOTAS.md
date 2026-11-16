@@ -29,3 +29,22 @@
 
 # desafio pl04.
     O @section substitui o conteúdo principal da página, enquanto o @push acumula scripts ou estilos adicionais vindos de várias vistas
+
+# pl05
+## a3
+    
+## a4
+
+## b2
+
+## b3
+
+## c2
+
+## c3
+
+## d3
+
+## d5
+
+## d5

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class InicioController extends Controller
 {
@@ -32,7 +33,7 @@ class InicioController extends Controller
             ->get();
 
         return view('index', [
-            'proximos' => array_slice($proximos, 0, 3),
+            'proximos' => $proximos
         ]);
     }
 

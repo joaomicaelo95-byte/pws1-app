@@ -144,7 +144,7 @@ class EventoController extends Controller
 
         // Mostrar apenas os eventos do tipo pedido
         return view('eventos.index', [
-            'eventos' => $eventos
+            'eventos' => $eventos,
             'tipo' => $tipo,
             'disponibilidade' => null,
         ]);

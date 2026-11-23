@@ -14,20 +14,7 @@ class InicioController extends Controller
      */
     public function index(): View
     {
-        // $proximos = config('eventos');
-        // $hoje = date('Y-m-d');
-
-        // $proximos = array_filter(
-        //     $proximos,
-        //     fn($evento) => $evento['data'] >= $hoje
-        // );
-
-        // usort(
-        //     $proximos,
-        //     fn($a, $b) => strcmp($a['data'], $b['data'])
-        // );
-
-        $proximos = Evento::query()
+        $proximos = Evento::query()->with('tipo')
             ->where('data', '>=', now()->toDateString())
             ->orderBy('data')
             ->limit(3)

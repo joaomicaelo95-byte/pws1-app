@@ -20,7 +20,9 @@
             <p><a href="{{ route('eventos.proximos') }}">Próximos eventos</a></p>
         </div>
         <div>
-            <p><a href="{{ route('eventos.index', ['tipo' => 'hackathon']) }}">Hackathons</a></p>
+            @foreach ($tipos as $tipoFiltro)
+                <p><a href="{{ route('eventos.index', ['tipo' => $tipoFiltro->slug]) }}">{{ $tipoFiltro->nome }}</a></p>
+            @endforeach
         </div>
     </div>
     <hr>

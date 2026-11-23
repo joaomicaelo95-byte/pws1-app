@@ -6,6 +6,7 @@ use App\Models\Evento;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 // use Illuminate\Support\Facades\DB;
+use App\Models\Tipo;
 
 class EventoController extends Controller
 {
@@ -19,56 +20,22 @@ class EventoController extends Controller
         $disponibilidade = $request->query('disponibilidade');
 
         $eventos = Evento::query()
-            ->when($tipo, fn ($consulta) => $consulta->where('tipo', $tipo))
+            ->when($tipo, fn ($consulta) => $consulta->whereRelation('tipo', 'slug', $tipo))
             ->when($disponibilidade === 'esgotados', fn ($consulta) => $consulta->whereColumn('inscritos', '>=', 'vagas'))
             ->when($disponibilidade === 'disponiveis', fn ($consulta) => $consulta->whereColumn('inscritos', '<', 'vagas'))
             ->orderBy('data')
             ->get();
 
-        // $eventos = config('eventos');
-        // $tipo = request('tipo');
-        // $disponibilidade = request('disponibilidade');
-
-        // if($disponibilidade === 'esgotados') {
-        //     $eventos = array_filter(
-        //         $eventos,
-        //         fn($evento) => $evento['inscritos'] >= $evento['vagas']
-        //     );
-        // }elseif ($disponibilidade === 'disponiveis') {
-        //     $eventos = array_filter(
-        //         $eventos,
-        //         fn($evento) => $evento['inscritos'] < $evento['vagas']
-        //     );
-        // }
-
-        // if($tipo){
-        //     $eventos = array_filter($eventos, 
-        //         fn($evento) => $evento['tipo'] === $tipo
-        //     );
-        // }
-
         return view('eventos.index', [
             'eventos' => $eventos,
             'tipo' => $tipo,
             'disponibilidade' => $disponibilidade,
+            'tipos' => Tipo::orderBy('nome')->get(),
         ]);
     }
 
     public function proximos(): View
     {
-        // $eventos = config('eventos');
-        // $hoje = date('Y-m-d');
-
-        // $eventos = array_filter(
-        //     $eventos,
-        //     fn($evento) => $evento['data'] >= $hoje
-        // );
-
-        // usort(
-        //     $eventos,
-        //     fn($a, $b) => $a['data'] <=> $b['data']
-        // );
-
         $eventos = Evento::query()
             ->where('data', '>=', now()->toDateString())
             ->orderBy('data')
@@ -78,6 +45,7 @@ class EventoController extends Controller
             'eventos' => $eventos,
             'tipo' => null,
             'disponibilidade' => null,
+            'tipos' => Tipo::orderBy('nome')->get(),
         ]);
     }
 
@@ -102,40 +70,13 @@ class EventoController extends Controller
      */
     public function show(Evento $evento): View
     {
-        // $evento = Evento::find($id);
-
-        // if ($evento === null) {
-        //     abort(404);
-        // }
-
         return view('eventos.show', ['evento' => $evento]);
     }
 
-    // private function procurar(int $id): ?array
-    // {
-    //     foreach (config('eventos') as $evento){
-    //         if ($evento['id'] === $id) {
-    //             return $evento;
-    //         }
-    //     }
-
-    //     return null;
-    // }
-
     public function porTipo(string $tipo): view
     {
-        // // Obtem os eventos definidos em config/eventos.php
-        // $eventos = config('eventos');
-        // // Reúne os tipos existentes para validar o parâmetro recebido na URL
-        // $tipos = array_column($eventos, 'tipo');
-
-        // // Se o tipo não existir, retorna erro 404
-        // if (!in_array($tipo, $tipos, true)) {
-        //     abort(404);
-        // }
-
         $eventos = Evento::query()
-            ->where('tipo', $tipo)
+            ->whereRelation('tipo', 'slug', $tipo)
             ->orderBy('data')
             ->get();
 
@@ -148,6 +89,7 @@ class EventoController extends Controller
             'eventos' => $eventos,
             'tipo' => $tipo,
             'disponibilidade' => null,
+            'tipos' => Tipo::orderBy('nome')->get(),
         ]);
     }
 
